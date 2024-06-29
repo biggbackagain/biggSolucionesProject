@@ -1,4 +1,4 @@
-{% load static %}  
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,6 +23,98 @@
             color: white;
             padding: 20px 0;
         }
+        /* Estilos para las tarjetas en la sección de servicios */
+.card {
+    border: none;
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para las tarjetas */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background-color: #039BE5; /* Azul pastel */
+    color: #ffffff; /* Color blanco para el texto */
+}
+
+
+.card-link {
+    text-decoration: none; /* Quita el subrayado del enlace */
+}
+
+.card-link .card-body {
+    padding: 2rem; /* Aumenta el padding interno de la tarjeta */
+}
+
+.service-icon {
+    font-size: 60px; /* Aumenta el tamaño del ícono */
+    color: #007BFF;
+    margin-bottom: 20px; /* Agrega espacio entre el ícono y el texto */
+}
+
+h4.my-3 {
+    font-size: 1.25rem; /* Tamaño de fuente para los títulos */
+    font-weight: bold;
+    margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+p {
+    font-size: 1rem; /* Tamaño de fuente para el texto */
+}
+/* Hero Section */
+.hero-section {
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Texto blanco */
+    padding: 100px 0; /* Espaciado superior e inferior */
+    text-align: center;
+    position: relative; /* Necesario para el posicionamiento absoluto del logo */
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5); /* Degradado oscuro para darle profundidad */
+    padding: 50px 0; /* Espaciado interior */
+    border-radius: 10px; /* Esquinas redondeadas */
+    max-width: 800px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar el contenido */
+    position: relative;
+}
+
+.hero-logo {
+    margin-bottom: 30px; /* Espacio debajo del logo */
+}
+
+.logo-img {
+    max-width: 450px; /* Ancho máximo del logo */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+.hero-title {
+    font-size: 2.5rem; /* Tamaño de fuente grande para el título */
+    font-weight: bold;
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+.hero-text {
+    font-size: 1.2rem; /* Tamaño de fuente para el texto */
+    line-height: 1.6; /* Altura de línea para mejorar la legibilidad */
+    margin-bottom: 30px; /* Espacio debajo del texto */
+}
+
+.btn-primary {
+    background-color: #007BFF; /* Color de fondo del botón */
+    border-color: #007BFF; /* Color del borde del botón */
+    color: #ffffff; /* Color del texto del botón */
+    padding: 10px 30px; /* Espaciado interno del botón */
+    border-radius: 5px; /* Esquinas redondeadas del botón */
+    font-size: 1.25rem; /* Tamaño de fuente del botón */
+    text-decoration: none; /* Quitar subrayado del enlace */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Color de fondo del botón en hover */
+    border-color: #0056b3; /* Color del borde del botón en hover */
+}
     </style>
 </head>
 <body>
@@ -34,76 +126,109 @@
       {% block main %} {% include 'partials/_base.html' %} {% endblock %}
     </main>
    
-<section id="carousel" class="py-5">
-  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-          <div class="carousel-item active">
-              <img src={% static "img/slider1.svg" %} class="d-block w-100" alt="Slide 1">
-              <div class="carousel-caption d-none d-md-block">
-                  
-                  <a href="#" class="btn btn-primary">Aquí</a>
-              </div>
-          </div>
-          <div class="carousel-item">
-              <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 2">
-              <div class="carousel-caption d-none d-md-block">
-                  <h5>Título del Slide 2</h5>
-                  <p>Descripción del slide 2.</p>
-                  <a href="#" class="btn btn-primary">Acción 2</a>
-              </div>
-          </div>
-          <div class="carousel-item">
-              <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 3">
-              <div class="carousel-caption d-none d-md-block">
-                  <h5>Título del Slide 3</h5>
-                  <p>Descripción del slide 3.</p>
-                  <a href="#" class="btn btn-primary">Acción 3</a>
-              </div>
-          </div>
-          <!-- Agrega más carousel-items según sea necesario -->
-      </div>
-  </div>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="{% static 'img/logoCaraSola.svg' %}" alt="Logo de BECAM AI" class="logo-img">
+            </div>
+            <h1 class="hero-title">Bienvenido a BECAM AI</h1>
+            <p class="hero-text">En BECAM AI entendemos que la tecnología debe ser accesible. Nos dedicamos a asegurar que la innovación se integre perfectamente en tu empresa, beneficiando tanto a tu equipo como a tus operaciones. Estamos entusiasmados de trabajar juntos para impulsar el futuro de tu negocio.</p>
+            <a href="#" class="btn btn-primary">Agenda una cita</a>
+        </div>
+    </div>
 </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-5">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <i class="service-icon fas fa-laptop"></i>
-                    <h4 class="my-3">Reparación de Computadoras</h4>
-                    <p>Ofrecemos servicios de reparación y mantenimiento de computadoras.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="service-icon fas fa-shield-alt"></i>
-                    <h4 class="my-3">Venta de Software</h4>
-                    <p>Proveemos software original, como antivirus y Microsoft Office.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="service-icon fas fa-video"></i>
-                    <h4 class="my-3">Cámaras de Seguridad</h4>
-                    <p>Instalamos sistemas de cámaras de seguridad y ofrecemos soluciones de IA.</p>
-                </div>
+
+
+  <!-- Services Section -->
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Nuestros Servicios</h2>
+        <div class="row">
+            <!-- Servicio 1 -->
+            <div class="col-md-4">
+                <a href="" class="card-link">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="service-icon fas fa-laptop"></i>
+                            <h4 class="my-3">Reparación de Computadoras</h4>
+                            <p>Ofrecemos servicios de reparación y mantenimiento de computadoras, desde problemas de hardware hasta optimización de software. Nuestro equipo de técnicos especializados asegura que tu equipo funcione como nuevo.</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="row text-center mt-4">
-                <div class="col-md-4">
-                    <i class="service-icon fas fa-network-wired"></i>
-                    <h4 class="my-3">Cableado Estructurado</h4>
-                    <p>Realizamos instalaciones de cableado estructurado y servicios de redes.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="service-icon fas fa-code"></i>
-                    <h4 class="my-3">Desarrollo de Software</h4>
-                    <p>Desarrollamos software a la medida y páginas web.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="service-icon fas fa-brain"></i>
-                    <h4 class="my-3">Inteligencia Artificial</h4>
-                    <p>Incorporamos IA en nuestras soluciones tecnológicas.</p>
-                </div>
+
+            <!-- Servicio 2 -->
+            <div class="col-md-4">
+                <a href="" class="card-link">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="service-icon fas fa-shield-alt"></i>
+                            <h4 class="my-3">Venta de Software</h4>
+                            <p>Proveemos software original y licenciado, incluyendo antivirus, Microsoft Office, y otros programas esenciales para tu computadora. Asegura la legalidad y seguridad de tus aplicaciones con nuestras soluciones.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="col-md-4">
+                <a href="" class="card-link">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="service-icon fas fa-video"></i>
+                            <h4 class="my-3">Cámaras de Seguridad</h4>
+                            <p>Instalamos sistemas de cámaras de seguridad avanzados, adaptados a las necesidades de tu hogar o empresa. Ofrecemos soluciones completas con tecnología de IA para una vigilancia eficiente.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Servicio 4 -->
+            <div class="col-md-4 mt-4">
+                <a href="" class="card-link">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="service-icon fas fa-network-wired"></i>
+                            <h4 class="my-3">Cableado Estructurado</h4>
+                            <p>Realizamos instalaciones profesionales de cableado estructurado para redes, garantizando una infraestructura robusta y eficiente para tu red de datos y comunicaciones.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Servicio 5 -->
+            <div class="col-md-4 mt-4">
+                <a href="" class="card-link">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="service-icon fas fa-code"></i>
+                            <h4 class="my-3">Desarrollo de Software</h4>
+                            <p>Desarrollamos software a la medida y creamos páginas web personalizadas según tus necesidades. Trabajamos contigo para construir soluciones tecnológicas que impulsen tu negocio.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Servicio 6 -->
+            <div class="col-md-4 mt-4">
+                <a href="" class="card-link">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="service-icon fas fa-brain"></i>
+                            <h4 class="my-3">Inteligencia Artificial</h4>
+                            <p>Incorporamos inteligencia artificial en nuestras soluciones tecnológicas, ofreciendo herramientas innovadoras que mejoran tus procesos y toman decisiones basadas en datos.</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- About Section -->
     <section id="about" class="py-5 bg-light">
@@ -158,4 +283,3 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
-

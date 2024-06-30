@@ -115,6 +115,38 @@ p {
     background-color: #0056b3; /* Color de fondo del botón en hover */
     border-color: #0056b3; /* Color del borde del botón en hover */
 }
+#contact-form {
+    background-color: #000000; /* Fondo negro para el formulario */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Sombra sutil con un tono más claro para contraste */
+}
+
+#contact-form .form-control {
+    border-radius: 4px; /* Bordes redondeados en los campos de formulario */
+    background-color: #333333; /* Fondo oscuro para los campos de formulario */
+    color: #ffffff; /* Texto blanco para los campos de formulario */
+    border: 1px solid #444444; /* Borde gris oscuro para los campos de formulario */
+}
+
+#contact-form .btn {
+    padding: 12px; /* Más espacio en el botón */
+    font-size: 1.1rem; /* Aumento en el tamaño de la letra */
+}
+
+#contact-form .form-group {
+    margin-bottom: 1.5rem; /* Más espacio entre los campos del formulario */
+}
+
+#form-response {
+    font-size: 1.1rem; /* Tamaño de fuente más grande para el mensaje de éxito */
+    color: #28a745; /* Color verde para el mensaje de éxito */
+    font-weight: bold; /* Texto en negrita */
+}
+
+
+
+
     </style>
 </head>
 <body>
@@ -246,32 +278,22 @@ p {
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center">Contáctanos</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu email">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Ingresa tu mensaje"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                    </form>
-                </div>
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-black">
+    <div class="container">
+        <h2 class="text-center mb-4">Contáctanos</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <form id="contact-form" method="post" action="{% url 'index' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                </form>
+                <div id="form-response" class="text-center mt-3"></div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     
       {% block footer %} {% include 'partials/_footer.html' %} {% endblock %}
     
@@ -281,5 +303,16 @@ p {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#contact-form').on('submit', function(event) {
+                event.preventDefault();  // Previene el comportamiento por defecto del formulario
+                
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#form-response').html('<div class="alert alert-success">' + response.message + '</
 </body>
 </html>
